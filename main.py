@@ -1,6 +1,6 @@
 from ElevatorActList import ElevatorActList
 from Elevator import Elevator
-from callListTry import CallsList
+from CallList import CallsList
 from Building import Building
 from Call import Call
 from ElevatorActTry import ElevatorAction
@@ -13,11 +13,11 @@ if __name__ == '__main__':
     # 1) load call list:
     calls_list = CallsList()
     final_calls_list = CallsList()
-    calls_list.loadCSV("Calls_d.csv")
+    calls_list.loadCSV("Calls_a.csv")
 
     # 2) load building
     build: Building = Building()
-    build.loadJson("B5.json")
+    build.loadJson("B1.json")
 
     # 3) creat an array of elevators of ElevatorAct
     elev_act_list: ElevatorActList = ElevatorActList()

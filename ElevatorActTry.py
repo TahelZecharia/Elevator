@@ -28,6 +28,7 @@ class ElevatorAction:
         self.__action_time = 0
         self.__test = 0
         self.__update_action_list: set = set()
+        self.sim_time_for_calls : float = 0
 
     # This is run once before the simulation begins to set the time
     def get_flag(self):
