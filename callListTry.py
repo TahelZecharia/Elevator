@@ -1,8 +1,9 @@
 import csv
-from callTry import Call
+from Call import Call
+from InterfaceCallList import InterfaceCallList
 
 
-class CallsList:
+class CallsList(InterfaceCallList):
 
     def __init__(self):
         self.__callList = []
@@ -13,15 +14,9 @@ class CallsList:
             csvreader = csv.reader(file)
             for row in csvreader:
                 c = Call(name=str(row[0]), time=float(row[1]), src=int(row[2]),
-                         dest=int(row[3]), status=int(row[4]), allocateTo=int(row[5]))
+                         dest=int(row[3]), status=int(row[4]), allocate_to=int(row[5]))
                 self.__callList.append(c)
                 rows.append(row)
-
-    def getCall(self, ind: int) -> Call:
-        return self.__callList[ind]
-
-    def getCallList(self) -> list:
-        return self.__callList
 
     def writeCSV(self):
         newCallList = []
@@ -34,14 +29,20 @@ class CallsList:
             csvWriter = csv.writer(file)  # create a csvwriter object
             csvWriter.writerows(newCallList)  # write the data
 
+    def getCall(self, ind: int) -> Call:
+        return self.__callList[ind]
+
+    def add_call(self, call: Call):
+        self.__callList.append(call)
+
+    def remove_call(self, call: Call):
+        self.__callList.remove(call)
+
+    def getCallList(self) -> list:
+        return self.__callList
+
+    def get_len(self) -> int:
+        return len(self.__callList)
+
     def __str__(self) -> str:
         return f"list:{self.__callList.__repr__()}"
-
-
-# if __name__ == '__main__':
-#
-#     cl = CallsList()
-#     cl.loadCSV("Calls_a.csv")
-#     print(cl.getCall(3))
-#     print(cl)
-#     cl.writeCSV()

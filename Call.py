@@ -1,16 +1,16 @@
 
-# from InterfaceCall import InterfaceCall
+from InterfaceCall import InterfaceCall
 
 
-class Call:  # להוסיף אינטרפייס
+class Call(InterfaceCall):
 
-    def __init__(self, name: str, time: float, src: int, dest: int, status: int, allocateTo: int):
+    def __init__(self, name: str, time: float, src: int, dest: int, status: int, allocate_to: int):
         self.__name = name
         self.__time = time
         self.__src = src
         self.__dest = dest
         self.__status = status
-        self.__allocated_to = allocateTo
+        self.__allocated_to = allocate_to
         self.__got_to_src: bool = False
         self.__got_to_dest: bool = False
         self.__got_src_time: float = 0.
