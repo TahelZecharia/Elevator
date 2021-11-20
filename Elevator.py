@@ -1,4 +1,5 @@
 from Ex1.Call import Call
+# This class implements the Elevator Interface
 
 
 class Elevator:

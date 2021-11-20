@@ -2,6 +2,8 @@ import json
 from InterfaceBuilding import InterfaceBuilding
 from Elevator import Elevator
 
+# This class implements the Building Interface
+
 
 class Building(InterfaceBuilding):
 

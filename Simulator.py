@@ -1,10 +1,11 @@
 import copy
 
 from Ex1.Call import Call
-from Ex1.ElevatorActTry import ElevatorAction
+from Ex1.ElevatorAct import ElevatorAction
 from Ex1.Elevator import Elevator
 
 
+# This is the main plan given that an elevator runs it and pretends it is in action
 def sim(ele: Elevator) -> ElevatorAction:
     cur_time: float = 0
     elev: ElevatorAction = ElevatorAction(ele)
@@ -20,6 +21,9 @@ def sim(ele: Elevator) -> ElevatorAction:
     return elev
 
 
+# This function receives an elevator and call
+# returns the time the call will add to the
+# elevator if the reading was in the elevator
 def cost(ele: Elevator, ele_act: ElevatorAction, cal: Call) -> float:
     elev: Elevator = copy.deepcopy(ele)
     elev.add_calls(cal)

@@ -3,10 +3,15 @@ from Elevator import Elevator
 from CallList import CallsList
 from Building import Building
 from Call import Call
-from ElevatorActTry import ElevatorAction
+from ElevatorAct import ElevatorAction
 from Simulator import sim
 from Simulator import cost
 
+# this is the main program that gets a Jason file containing
+# a building with elevators inside, and a csv file of calls,
+# and returns a csv file of calls with the optimal placement
+# for each call so that the average waiting time of all calls
+# is as short as possible.
 
 if __name__ == '__main__':
 
@@ -17,7 +22,7 @@ if __name__ == '__main__':
 
     # 2) load building
     build: Building = Building()
-    build.loadJson("B1.json")
+    build.loadJson("B2.json")
 
     # 3) creat an array of elevators of ElevatorAct
     elev_act_list: ElevatorActList = ElevatorActList()

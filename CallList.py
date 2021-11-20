@@ -1,6 +1,7 @@
 import csv
 from Call import Call
 from InterfaceCallList import InterfaceCallList
+# This class implements the CallList Interface
 
 
 class CallsList(InterfaceCallList):

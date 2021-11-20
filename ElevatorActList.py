@@ -1,7 +1,10 @@
-from ElevatorActTry import ElevatorAction
+from ElevatorAct import ElevatorAction
+from InterfaceElevatorActList import InterfaceElevatorActList
+
+# This class implements the ElevatorActList Interface
 
 
-class ElevatorActList:
+class ElevatorActList(InterfaceElevatorActList):
 
     def __init__(self):
         self.__elev_list = []

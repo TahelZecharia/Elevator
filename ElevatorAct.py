@@ -2,9 +2,12 @@ import copy
 
 from Call import Call
 from Elevator import Elevator
+from Ex1.InterfaceElevAct import InterfaceElevatorAct
+
+# This class implements the ElevatorAct Interface
 
 
-class ElevatorAction:
+class ElevatorAction(InterfaceElevatorAct):
 
     def __init__(self, elev: Elevator):
         self.__id: int = elev.get_ID()
@@ -30,7 +33,6 @@ class ElevatorAction:
         self.__update_action_list: set = set()
         self.sim_time_for_calls : float = 0
 
-    # This is run once before the simulation begins to set the time
     def get_flag(self):
         return self.__flag
 
@@ -96,13 +98,13 @@ class ElevatorAction:
                         and ((self.__cur_floor - self.__speed) <= call.get_src()):
                     self.update_action_time(call.get_src())
                     if self.__test: print("get src")
-                    self.new_passenger(call)
+                    self.call_got_to_src(call)
             for call in self.__curr_calls_list:
                 if call.get_got_to_src() and (self.__cur_floor > call.get_dest()) \
                         and ((self.__cur_floor - self.__speed) <= call.get_dest()):
                     self.update_action_time(call.get_dest())
                     if self.__test: print("get dest")
-                    self.passenger_exit(call)
+                    self.call_got_to_dest(call)
             if self.__test: print("^ moved up ^")
         else:
             self.__cur_floor -= self.__speed
@@ -111,13 +113,13 @@ class ElevatorAction:
                         and ((self.__cur_floor + self.__speed) >= call.get_src()):
                     self.update_action_time(call.get_src())
                     if self.__test: print("get src")
-                    self.new_passenger(call)
+                    self.call_got_to_src(call)
             for call in self.__curr_calls_list:
                 if call.get_got_to_src() and (self.__cur_floor < call.get_dest()) \
                         and ((self.__cur_floor - self.__speed) >= call.get_dest()):
                     self.update_action_time(call.get_dest())
                     if self.__test: print("get src")
-                    self.passenger_exit(call)
+                    self.call_got_to_dest(call)
             if self.__test: print("v moved down v")
 
     # A method that changes the direction of the elevator
@@ -127,12 +129,12 @@ class ElevatorAction:
         else:
             self.__flag = "Up"
 
-    def new_passenger(self, call: Call):
+    def call_got_to_src(self, call: Call):
         call.set_got_to_src()
         call.set_got_src_time(self.__cur_time)
         if self.__test: print("new passenger")
 
-    def passenger_exit(self, call: Call):
+    def call_got_to_dest(self, call: Call):
         call.set_got_to_dest()
         call.set_got_dest_time(self.__cur_time)
         self.__done_calls_list.append(call)
@@ -161,12 +163,12 @@ class ElevatorAction:
             if (not call.get_got_to_src()) and (self.__cur_floor == call.get_src()):
                 self.update_action_time(call.get_src())
                 if self.__test: print("get src")
-                self.new_passenger(call)
+                self.call_got_to_src(call)
 
         for call in self.__curr_calls_list:
             if call.get_got_to_src() and (self.__cur_floor == call.get_dest()):
                 self.update_action_time(call.get_src())
-                self.passenger_exit(call)
+                self.call_got_to_dest(call)
                 if self.__test: print("get dest")
 
         if len(self.__curr_calls_list) == 0:
