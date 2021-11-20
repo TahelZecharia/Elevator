@@ -20,7 +20,8 @@ There is the simulator that operates the elevator of the elevAct type and there 
 ### My algorithm:
 Given a list of readings, we will go through all the readings and check with the help of the funk cost how much the reading "costs" with the help of an image of the income of the reading to the reading list of that elevator. The function simulates the effect of the same reading on all the readings in the elevator, taking into account the location of the elevator and the direction of the readings in the elevator.
 
-All the classes have an interface which it is explained about each class and what it does, and the functions it has and what they do.
+- All the classes have an interface which it is explained about each class and what it does, and the functions it has and what they do.
+- I added the building and calls  files to allow the tester to run easily.
 
 ### Literature review:
 I used materials from the following links:
